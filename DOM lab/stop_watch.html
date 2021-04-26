@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title>Stop Watch</title>
+        <style>
+            .watch{
+                border:3px solid blue; 
+                text-align:center; 
+                font-size:2em; 
+                margin-bottom:10px
+            }
+        </style>
+    </head>
+
+    <body>
+        
+        <div id="time" class="watch" >00:00</div>
+        <button id="startBtn" >Start</button>
+        <button id="stopBtn" disabled="true">Stop</button>
+
+        <script>
+            var sec=0;
+            var min=0;
+            var start=document.getElementById("startBtn");
+            var stopClk = document.getElementById("stopBtn");
+
+            window.onload = function() { stopwatch(); }
+
+            // Event listener for start button
+            start.addEventListener('click', function() {
+                var time;
+                start.disabled=true;
+                stopClk.disabled=false;
+                setInterval(startClock,600);
+                
+            })
+            
+            // Event listener for stop button
+            stopClk.addEventListener('click', function() {
+                stopwatch();
+            })
+
+           
+            function startClock(){
+                sec +=1;
+                var min_format, sec_format;
+                if(sec==60){
+                    min +=1;
+                    sec=0;
+                } 
+                
+                min_format = (min<10)? "0"+min : min;
+                sec_format = (sec<10)? "0"+sec : sec;
+                var time = min_format+":"+sec_format;
+                console.log(time);
+                document.getElementById("time").textContent=time;
+            }
+
+            function stopwatch(){
+                document.getElementById("time").value="00.00";
+                sec=0;
+                min=0;
+                start.disabled=false;
+                stopClk.disabled=true;
+            }
+
+
+            
+        </script>
+    </body>
+</html>

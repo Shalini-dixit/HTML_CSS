@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Countries Table</title>
+    <style>
+        td,
+        th {
+            background: #DDD;
+            padding: 5px 10px
+        }
+
+        input[type='text'] {
+            width: 60px
+        }
+
+        .remove {
+            color: blue;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <table id="countriesTable">
+        <tr>
+            <th>Country</th>
+            <th>Capital</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td><input type="text" id="newCountryText" /></td>
+            <td><input type="text" id="newCapitalText" /></td>
+            <td><a href="#" id="createLink" onclick="addCntry()">[Create]</a></td>
+        </tr>
+
+    </table>
+    <script>
+
+        var countries = ['Sweden', 'Germany', 'France'];
+        var capitals = ['Stockholm', 'Berlin', 'Paris'];
+
+        $(() => initializeTable())
+
+        function addCntry() {
+            var newCountryText = $("#newCountryText").val();
+            var newCapitalText = $("#newCapitalText").val();
+            $("#countriesTable").append("  <tr><td>" + newCountryText + "</td><td>"
+                + newCapitalText + "</td><td> <a href='#' class='up'>[up]</a><a href='#' class='down' >[down]</a>" +
+                " <a href='#' class='remove'> [delete]</a></td></tr> ");
+            
+            $(".up,.down").show();
+            $("tr.firstRow .up,tr:last .down").hide();
+            $(".up,.down").click(function () {
+                var row = $(this).parents("tr:first");
+                if ($(this).is(".up")) {
+                    row.insertBefore(row.prev());
+                    console.log(row.index());
+                    if(row.index()==1){
+                        console.log("hi");
+                        $(".up").show();
+                        $(this).hide();
+                    } 
+                } else {
+                    row.insertAfter(row.next());
+                    console.log(row.index());
+                    if($(this).is("tr:last")) {
+                       
+                        $(this).hide();
+                    } else {
+                        $(".up").show();
+                    }
+                }
+            })
+            clearTextbox();
+            
+        }
+
+        function clearTextbox() {
+            $("#newCountryText").val("");
+            $("#newCapitalText").val("");
+        }
+
+        function initializeTable() {
+            console.log("init table");
+
+            $("#countriesTable").append("  <tr class='firstRow'><td>" + countries[0] + "</td><td>"
+                + capitals[0] + "</td><td> <a href='#' class='up'>[up]</a><a href='#' class='down' >[down]</a>" +
+                " <a href='#' class='remove'> [delete]</a></td></tr> ");
+
+            $("#countriesTable").append("  <tr><td>" + countries[1] + "</td><td>"
+                + capitals[1] + "</td><td> <a href='#' class='up'>[up]</a><a href='#' class='down' >[down]</a>" +
+                " <a href='#' class='remove'> [delete]</a></td></tr> ");
+
+            $("#countriesTable").append("  <tr><td>" + countries[2] + "</td><td>"
+                + capitals[2] + "</td><td> <a href='#' class='up'>[up]</a><a href='#' class='down' >[down]</a>" +
+                " <a href='#' class='remove'> [delete]</a></td></tr> ");
+        }
+
+
+        $('#countriesTable').on('click', 'tr a.remove', function (e) {
+            e.preventDefault();
+            var a = $(this).closest('tr').remove();
+            console.log(a.insertBefore);
+        });
+
+        $(document).ready(function () {
+            $(".up,.down").show();
+            $("tr.firstRow .up,tr:last .down").hide();
+            $(".up,.down").click(function () {
+                var row = $(this).parents("tr:first");
+                if ($(this).is(".up")) {
+                    row.insertBefore(row.prev());
+                    console.log(row.index());
+                    if(row.index()==1){
+                        console.log("hi");
+                        $(".up").show();
+                        $(this).hide();
+                    }
+                } else {
+                    row.insertAfter(row.next());
+                    if($(this).last()) {
+                        $(".down").show();
+                        $(this).hide();
+                    }
+                }
+            });         
+        })
+
+    </script>
+</body>
+
+</html>

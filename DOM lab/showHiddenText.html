@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>
+            Show hidden text
+        </title>
+        <script>
+            function showText(){
+                var hiddenText = document.getElementById("hiddenText").style.display="block";
+                document.getElementById("showMore").style.display="none";
+            }
+        </script>
+    </head>
+    <body>
+        <p>Welcome to the show more text.</p>
+        <a href="#" id="showMore" onclick="showText()">Show more</a>
+        <span id="hiddenText" style="display: none;">Hello!! This is the hidden text.</span>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+.maindiv{
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 5%;
+    height: 306px;
+    border: 1px solid black;
+    width:306px;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    float:left;
+    font-size: 90px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.header{
+    margin: 1% 1% 0 1%;
+    background-color: lightgrey;
+    
+    
+}
+.header h1{
+    text-align: center;
+}
+
+.header input{
+    background-color:  rgb(56, 76, 133);
+    color: white;
+    font-weight:bold;
+    width: 10%;
+    height: 5%;
+    font-family:'Times New Roman', Times, serif;
+    font-size: large;
+}
+

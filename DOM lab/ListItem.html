@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>
+            Add Items to text box
+        </title>
+    </head>
+    <body>
+        <ul id="items">
+            <li>First element</li>
+            <li>Second element</li>
+            <li>Third element</li>
+        </ul>
+        <textarea name="txtarea" id="result" cols="30" rows="10"></textarea>
+        <br>
+        <input type="button" value="Extract Text" onclick="extract_text()" />
+        <script>
+            function extract_text(){
+                var lis = document.getElementById("items").getElementsByTagName("li");
+                var extracted_text="";
+                for( i=0; i<lis.length;i++){
+                    extracted_text += lis[i].textContent+"\n";
+                }
+                document.getElementById("result").value=extracted_text;
+            } 
+        </script>
+    </body>
+</html>

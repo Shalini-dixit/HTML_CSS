@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selectable Cities</title>
+    <style>
+        li {
+            display: inline-block;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .selected {
+            background-color: #DDD;
+        }
+
+        ul {
+            padding: 0;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body onload="attachEvents()">
+    <h2>Cities</h2>
+    <ul id="items">
+        <li>Stockholm</li>
+        <li>Göteborg</li>
+        <li>Malmö</li>
+        <li>Uppsala</li>
+        <li>Umeå</li>
+    </ul>
+    <button id="showTownsButton">Show Cities</button>
+    <div id="selectedTowns"></div>
+
+        <script>
+
+            $(document).ready(function () {
+                $("#items li").each(function (index) {
+                    $(this).attr("data-selected", "false");
+                });
+
+
+                $("#showTownsButton").click(function () {
+                    var townStr = "";
+                    $("#items li").each(function (index) {
+                        if ($(this).attr("data-selected") == "true") {
+                            townStr = townStr + $(this).text()+",";
+                        }
+                    });
+                    $("#selectedTowns").text(townStr.slice(0,townStr.length-1));
+
+                });
+            })
+
+            function attachEvents() {
+                $("li").click(function () {
+                    $(this).toggleClass("selected");
+                    if ($(this).is(".selected")) {
+                        $(this).attr("data-selected", "true");
+                    } else {
+                        $(this).attr("data-selected", "false");
+                    }
+
+                });
+            }
+
+        </script>
+</body>
+
+</html>

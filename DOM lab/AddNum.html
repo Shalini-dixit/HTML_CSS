@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Add Two Numbers</title>
+        <script>
+            function calc_sum(){ 
+                let num1,num2,sum =0.0;
+                num1= Number(document.getElementById("num1").value);
+                num2= Number(document.getElementById("num2").value);
+                sum = num1+num2;
+                console.log(sum);
+                document.getElementById("sum").value=sum;´
+            }
+            
+
+        </script>
+    </head>
+    <body>
+       <div> <input type="text" id="num1">
+       <strong>+</strong></div>
+       <div> <input type="text" id="num2">
+       <strong>+</strong></div>
+       <div> <input type="text" id="sum" readonly></div>
+       <input type="button" value="ADD" onclick="calc_sum()" />
+    </body>
+</html>

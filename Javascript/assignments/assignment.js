@@ -119,12 +119,6 @@ function calcDistanceBtwnPoints(coordinates){
     return dist;
 }
 
-function sleepIn(weekday, vacation){
-    if (weekday==false) {
-        return true;
-    }else
-        return false;
-}
 
 console.log("Problem1");
 var nums = ['2','4','3','7'];
@@ -168,6 +162,13 @@ console.log();
 console.log("Problem8");
 console.log("Distance between two points : "+ calcDistanceBtwnPoints(['2','4','5','0']));
 console.log("Distance between two points : "+ calcDistanceBtwnPoints(['2.34','15.66','-13.55','-2.9985']));
+
+function sleepIn(weekday, vacation){
+    if (weekday==false) {
+        return true;
+    }else
+        return false;
+}
 
 
 console.log(sleepIn(false,false));

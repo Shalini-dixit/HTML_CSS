@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <title>Add Item to list</title>
+</head>
+
+<body>
+    <h1>List of Items</h1>
+    <ul id="items">
+        <li>First Item <button class="remove">Delete</button></li>
+        <li>Second Item <button class="remove">Delete</button></li>
+    </ul>
+    <input type="text" name="" id="newItemText" />
+    <input type="button" value="Add" id="btnAdd">
+    <script>
+
+        var add = document.getElementById("btnAdd");
+
+        add.addEventListener('click', function () {
+            var newItemText = document.getElementById("newItemText").value;
+            var items = document.getElementById("items");
+            var entry = document.createElement('li');
+            entry.appendChild(document.createTextNode(newItemText));
+            entry.innerHTML += "&nbsp; <button class='remove'>Delete</button>";
+            items.appendChild(entry);
+            document.getElementById("newItemText").value = "";
+
+            entry.addEventListener('click', function () {
+                console.log("inside delete");
+                this.parentNode.removeChild(this);
+            })
+
+        })
+
+        var deletes = document.querySelectorAll('.remove');
+        deletes.forEach(btn => {
+            btn.addEventListener('click', function () {
+                console.log("inside delete");
+                this.parentNode.remove(this);
+            })
+        })
+
+
+    </script>
+</body>
+
+</html>

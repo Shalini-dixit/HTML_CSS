@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Search in List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <ul id="towns">
+        <li>Stockholm</li>
+        <li>Malmö</li>
+        <li>Göteborg</li>
+        <li>malung</li>
+    </ul>
+    <input type="text" id="searchText">
+    <button onclick="search()">Search</button>
+    <div id="result"></div>
+    <script>
+
+        function search() {
+            var searchText = $("#searchText").val();
+            var reg = new RegExp('/' + searchText + '/gi');
+            $("#towns li").each(function () {
+                $(this).css("fontWeight", "normal");
+                if (($(this).text().toLowerCase().includes(searchText.toLowerCase()))) {
+                    $(this).css("fontWeight", "bold");
+                }
+            })
+            $("#searchText").val("");
+        }
+
+    </script>
+</body>
+
+</html>
